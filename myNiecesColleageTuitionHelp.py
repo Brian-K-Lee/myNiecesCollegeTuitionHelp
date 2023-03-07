@@ -28,7 +28,7 @@ df = pd.DataFrame({'Amount':[50,100,150,200,250,300,400,500]})
 # https://fred.stlouisfed.org/series/FEDFUNDS#
 # Exported as 'FEDFUNDS.csv'
 # Open 'FEDFUNDS.csv' and Get the Mean of monthly Fedral Funds Rates
-fedFundRate = pd.read_csv('C:/Users/KT/Documents/Python/ForFun/myNiecesColleageTuition/FEDFUNDS.csv')
+fedFundRate = pd.read_csv('C:/Users/KT/Documents/Python/ForFun/myNiecesCollegeTuition/FEDFUNDS.csv')
 yearlyRate =  fedFundRate['FEDFUNDS'].mean()
 yearlyRate/12
 
@@ -55,7 +55,7 @@ df.Variance = df.Variance.astype(str) + '%'
 ### Let's See How Much % Each Payment Can Contribute to Annual Tution (National In-State Average)
 # Import Annual Average In-State Tution From Business Insider
 # https://www.businessinsider.com/personal-finance/average-college-tuition
-avgTuition = pd.read_excel('C:/Users/KT/Documents/Python/ForFun/myNiecesColleageTuition/AnnualAverageInStateTuition.xlsx')
+avgTuition = pd.read_excel('C:/Users/KT/Documents/Python/ForFun/myNiecesCollegeTuition/AnnualAverageInStateTuition.xlsx')
 # Retrieve 2021-2022 Annual In-State Tution Per US State
 avgTuition.iloc[:,2]
 # Get National Average In-Station Tuition
@@ -63,7 +63,7 @@ avgTuition.dtypes
 avgTuition.iloc[:,2] = avgTuition.iloc[:,2].str.replace(',','').str.replace('$','').astype(float)
 natAvgTuition = round(avgTuition.iloc[:,2].mean(),0)
 natAvgTuition = natAvgTuition.astype(int)
-print('Annual average in-state tuition at public colleages and universities in 2021-22 was',
+print('Annual average in-state tuition at public colleges and universities in 2021-22 was',
        locale.currency(natAvgTuition))
 
 ### Get the Future Value of Annual Average National Tuition
@@ -90,16 +90,16 @@ print(df.columns)
 df[['sumofPayments', 'futureValueofAnnuity','futureAnnualTuition']] = df[['sumofPayments', 'futureValueofAnnuity','futureAnnualTuition']].applymap(lambda x: locale.currency(x, grouping=True))
 
 ### Print The Minimum Monthly Saving Amounts that Could Cover 4+ Years
-print("The Minimum Monthly Saving That Can Cover 4 Years of Colleage Tuition Is",
+print("The Minimum Monthly Saving That Can Cover 4 Years of College Tuition Is",
       df.loc[df.yearCoverage.str.replace(' Years','').astype(float)>4,['Amount']].head(1).iloc[0].to_string(index=False,header=False),
       "Which Covers",
       df.loc[df.yearCoverage.str.replace(' Years','').astype(float)>4,['yearCoverage']].head(1).iloc[0].to_string(index=False,header=False))
 #print(df.iloc[:, [0,5]][df.yearCoverage.str.replace(' Years','').astype(float)>4])
 # Print The Minimum Monthly Saving Amounts that Could Cover 2+ Years
-print("The Minimum Monthly Saving That Can Cover 2 Years of Colleage Tuition Is",
+print("The Minimum Monthly Saving That Can Cover 2 Years of College Tuition Is",
       df.loc[df.yearCoverage.str.replace(' Years','').astype(float)>2,['Amount']].head(1).iloc[0].to_string(index=False,header=False),
       "Which Covers",
       df.loc[df.yearCoverage.str.replace(' Years','').astype(float)>2,['yearCoverage']].head(1).iloc[0].to_string(index=False,header=False))
 
 ###Export 'df' Data Frame
-df.to_csv("C:/Users/KT/Documents/Python/ForFun/myNiecesColleageTuition/myNiecesTutionHelp.csv",index=False)
+df.to_csv("C:/Users/KT/Documents/Python/ForFun/myNiecesCollegeTuition/myNiecesTutionHelp.csv",index=False)
